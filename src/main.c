@@ -97,7 +97,6 @@ int main()
             first_user_ptr = current_user_ptr;
         }
 
-        
         if (prev_user_ptr != NULL)
         {
             prev_user_ptr->next = current_user_ptr;
@@ -118,10 +117,9 @@ int main()
     }
 
     printf("\n");
-
     {
         printf("Now we modify our linkedlist!\n");
-        printf("Say, we search for the first user name \"peter\" (case sensitive), then we modify his email!\n");
+        printf("Say, we search for the user name \"peter\" (case sensitive), then we modify his email!\n");
 
         User* ptr = first_user_ptr;
 
@@ -141,6 +139,18 @@ int main()
             printf("next = %p\n", ptr->next);
             ptr = ptr->next;
         }
+    }
+
+    printf("\n");
+    {
+        printf("Now we delete a record from our linkedlist!\n");
+        printf("Say, we search for the user name \"billy\" (case sensitive), then we delete!\n");
+        
+        User **user_indirect = &first_user_ptr;
+        while (strcmp((*user_indirect)->name, "billy")) {
+            user_indirect = &(*user_indirect)->next;
+        }
+        *user_indirect = (*user_indirect)->next;
     }
 
     printf("\n");
